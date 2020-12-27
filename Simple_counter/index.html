@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      .button {
+        width: 150px;
+        height: 150px;
+      }
+    </style>
+  </head>
+<body>
+  <div class="container">
+    <button id="decrement" class="button">-</button>
+    <p id="count"><span id="numOfCount"></span> time(s) clicked!</p>
+    <button id="increment" class="button">+</button>
+  </div>
+
+  <script>
+    const $decrementBtn = document.getElementById('decrement');
+    const $incrementBtn = document.getElementById('increment');
+    const $numOfCount = document.getElementById('numOfCount');
+    let count = 0;
+
+    $numOfCount.textContent = count;
+
+    $decrementBtn.addEventListener('click', () => {
+      $numOfCount.textContent = --count;
+    });
+
+    $incrementBtn.addEventListener('click', () => {
+      $numOfCount.textContent = ++count;
+    });
+  </script>
+</body>
+</html>
