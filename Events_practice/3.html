@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  글자수 세기<br> 
+  <textarea rows="10" cols="10"></textarea><br> 
+  입력문자수:<span id="result"></span>
+  <script>
+    const $textArea = document.querySelector('textarea');
+    const $result = document.getElementById('result');
+
+    $textArea.addEventListener('input', () => {
+      $result.innerHTML = $textArea.value.length;
+    })
+  </script>
+</body>
+</html>
+
+<!-- 출처 - https://xianeml.tistory.com/66 -->

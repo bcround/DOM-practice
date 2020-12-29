@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <input type="text" name="quantity" id="quantity" value="1"> 
+  <button id="up">+</button> 
+  <button id="down">-</button>
+  <script>
+    const $input = document.querySelector('input[type=text]');
+    const $upBtn = document.getElementById('up');
+    const $downBtn = document.getElementById('down');
+
+    $upBtn.addEventListener('click', () => {
+      ++$input.value;
+    });
+
+    $downBtn.addEventListener('click', () => {
+      if ($input.value <= 1) return;
+      --$input.value;
+    })
+
+  </script>
+</body>
+</html>
+
+
+<!-- 출처 - https://xianeml.tistory.com/66 -->
