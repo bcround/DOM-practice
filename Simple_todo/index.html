@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    <input type="text" placeholder="enter todo!">
+    <button>Add</button>
+  </form>
+  <ul class="todoList"></ul>
+
+  <script>
+    const $input = document.querySelector('input[type=text]');
+    const $button = document.querySelector('button');
+    const $list = document.querySelector('.todoList');
+    const $form = document.querySelector('form');
+
+    const addTodo = () => {
+      if (!$input.value) return;
+
+      const $li = document.createElement('li');
+      const $checkBox = document.createElement('input');
+      const $span = document.createElement('span');
+      const $removeButton = document.createElement('button');
+      
+      $checkBox.setAttribute('type', 'checkbox');
+      $li.appendChild($checkBox);
+
+      $span.textContent = $input.value;
+      $li.appendChild($span);
+
+      $removeButton.classList.add('remove');
+      $removeButton.textContent = 'X';
+      $li.appendChild($removeButton);
+
+      $list.appendChild($li);
+
+      $input.value = '';
+      $input.focus();
+
+      $removeButton.onclick = e => {
+        $list.removeChild(e.target.parentNode);
+      }
+    };
+
+    $form.onsubmit = e => {
+      e.preventDefault();
+      addTodo();
+    };
+  </script>
+</body>
+</html>
