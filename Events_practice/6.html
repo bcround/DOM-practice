@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onClick="up()">+</button>
+  <button onClick="down()">-</button> 
+  <div id="result"> 
+    안녕하세요. 
+  </div>
+
+  <script>
+    const $result = document.getElementById('result');
+    let pxSize = 16;
+
+    function up() {
+      pxSize += 2;
+      $result.style.fontSize = pxSize + 'px';
+    }
+
+    function down() {
+      pxSize -= 2;
+      $result.style.fontSize = pxSize + 'px';
+    }
+  </script>
+</body>
+</html>
+
+<!-- 출처 - https://xianeml.tistory.com/66 -->

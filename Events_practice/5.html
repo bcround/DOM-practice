@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  회원정보<br> 
+  주소<input type="text" name="address1" id="address1" value="서울시 강남구"><br> 
+  전화번호<input type="text" name="phone1" id="phone1" value="010-1234-1234"><br> 
+  <hr> 
+  동일<input type="checkbox" name="chk"> 
+  <hr> 
+  배송지 정보<br> 
+  주소<input type="text" name="address2" id="address2" value=""><br> 
+  전화번호<input type="text" name="phone2" id="phone2" value=""><br>
+
+  <script>
+    const $userAddress = document.getElementById('address1');
+    const $userPhone = document.getElementById('phone1');
+    const $checkbox = document.querySelector('input[name=chk]');
+    const $address = document.getElementById('address2');
+    const $phone = document.getElementById('phone2');
+
+    $checkbox.onclick = function() {
+      if (this.checked){
+        $address.value = $userAddress.value;
+        $phone.value = $userPhone.value;
+      } else {
+        $address.value = '';
+        $phone.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
+
+<!-- 출처 - https://xianeml.tistory.com/66 -->

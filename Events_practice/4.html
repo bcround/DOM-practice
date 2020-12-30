@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  전체선택 
+  <input type="checkbox" name="all"><br> 
+  <input type="checkbox" name="java" class="lang">java<br> 
+  <input type="checkbox" name="sql" class="lang">sql<br> 
+  <input type="checkbox" name="angular" class="lang">angular<br>
+
+  <script>
+    const $allSelect = document.querySelector('input[name=all]');
+    const $langs = document.querySelectorAll('.lang');
+
+    $allSelect.onclick = function() {
+      console.log(this);
+      [...$langs].forEach(lang => lang.checked = this.checked);
+    }
+  </script>
+</body>
+</html>
+
+<!-- 출처 - https://xianeml.tistory.com/66 -->

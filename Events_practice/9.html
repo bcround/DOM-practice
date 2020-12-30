@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="success.html" onSubmit="return login(event)"> 
+    아이디<input type="text" name="userid" id="userid"> 
+    <span id="idSpan"></span><br> 
+    비밀번호<input type="text" name="passwd" id="passwd"> 
+    <span id="pwSpan"></span><br> 
+    <input type="submit" value="로그인"> 
+  </form>
+
+  <script>
+    const $userId = document.getElementById('userid');
+    const $userPw = document.getElementById('passwd');
+    const $idSpan = document.getElementById('idSpan');
+    const $pwSpan = document.getElementById('pwSpan');
+
+    function login() {
+      if (!$userId.value.length) {
+        $idSpan.textContent = '아이디를 입력하시오';
+        $userId.focus();
+        return false;
+      }
+      if(!$userPw.value.length) {
+        $pwSpan.textContent = '비밀번호를 입력하시오';
+        $userPw.focus();
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
+
+<!-- 출처 - https://xianeml.tistory.com/66 -->
