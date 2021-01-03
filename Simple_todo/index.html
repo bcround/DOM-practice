@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .todoList > li > input[type='checkbox']:checked + span {
+      text-decoration: line-through;
+    }
+  </style>
 </head>
 <body>
   <form>
@@ -41,15 +46,33 @@
       $input.value = '';
       $input.focus();
 
-      $removeButton.onclick = e => {
-        $list.removeChild(e.target.parentNode);
-      }
+      // 써밋이 일어날때마다 이벤트핸들러를 생성한다. 그러므로 아래와 같이 $list.onclick으로 이벤트 위임하는 방법이 낫다.
+      // $removeButton.onclick = e => {
+      //   $list.removeChild(e.target.parentNode);
+      // }
     };
 
     $form.onsubmit = e => {
       e.preventDefault();
       addTodo();
     };
+
+    $list.onclick = e => {
+      // click 이벤트를 잡지 말고 onchange를 잡아서 checkbox를 handle해줬어야 된다. (li 안에 onchange를 먹는애가 checkbox밖에 없기 때문에 가능함)
+      // if (e.target.getAttribute('type') === 'checkbox') {
+      //   e.target.checked ? 
+      //   e.target.nextElementSibling.style.textDecoration = 'line-through' :
+      //   e.target.nextElementSibling.style.textDecoration = 'none';
+      // }
+      if (!e.target.classList.contains('remove')) return;
+      e.target.parentNode.remove();
+    }
+
+    // 강사님 코드  CSS로도 할 수 있다. CSS 방법은 맨위에 있다.
+    // $list.onchange = ({target}) => {
+    //   target.nextElementSibling.style.textDecoration = target.checked ? 'line-through' : 'none';
+    // };
+
   </script>
 </body>
 </html>
