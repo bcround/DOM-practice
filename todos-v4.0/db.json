@@ -2,28 +2,28 @@
   "todos": [
     {
       "id": 1,
-      "content": "ㅁㄴㅇㅁㄴ",
-      "completed": false
+      "content": "a",
+      "completed": true
     },
     {
       "id": 2,
-      "content": "ㅇ",
-      "completed": false
+      "content": "b",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "content": "c",
+      "completed": true
     },
     {
       "id": 4,
-      "content": "ㅁㄴㅇ",
-      "completed": false
+      "content": "d",
+      "completed": true
     },
     {
       "id": 5,
-      "content": "ㅁㄴ",
-      "completed": false
-    },
-    {
-      "id": 6,
-      "content": "ㄴㅇ",
-      "completed": false
+      "content": "ef",
+      "completed": true
     }
   ]
 }
