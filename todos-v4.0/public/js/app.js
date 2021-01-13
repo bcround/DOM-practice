@@ -1,7 +1,6 @@
 let todos = [];
 let todoArr;
-let completeTodos;
-let activeTodos;
+let state = 'all';
 
 const request = {
   get(url) {
@@ -49,12 +48,7 @@ const $active = document.getElementById('active');
 const render = () => {
   const $fragment = document.createDocumentFragment();
 
-  completeTodos = todos.filter(todo => todo.completed);
-  activeTodos = todos.filter(todo => !todo.completed);
-
-  if ($all.classList.contains('active')) todoArr = todos;
-  else if ($active.classList.contains('active')) todoArr = activeTodos;
-  else todoArr = completeTodos;
+  todoArr = todos.filter(todo => (state === 'all' ? true : state === 'active' ? !todo.completed : todo.completed));
 
   $todos.textContent = '';
   todoArr.forEach(({ id, content, completed }) => {
@@ -163,8 +157,9 @@ const clearAllComplete = () => {
 };
 
 const changeState = event => {
-  [...event.currentTarget.children].forEach(list => list.classList.remove('active'));
-  event.target.classList.add('active');
+  // eslint-disable-next-line max-len
+  [...event.currentTarget.children].forEach(child => child.classList.toggle('active', event.target.id === child.id));
+  state = event.target.id;
   render();
 }
 
