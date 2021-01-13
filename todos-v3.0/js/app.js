@@ -1,5 +1,6 @@
 let todos = [];
 let todoArr;
+let state = 'all';
 
 // DOM nodes
 const $todosList = document.querySelector('.todos');
@@ -9,15 +10,12 @@ const $clearCompleted = document.querySelector('.clear-completed');
 const $countCompleted = document.querySelector('.completed-todos');
 const $countActive = document.querySelector('.active-todos');
 const $nav = document.querySelector('.nav');
-const $all = document.getElementById('all');
-const $active = document.getElementById('active');
 
 const render = () => {
   const $fragment = document.createDocumentFragment();
 
-  if ($all.classList.contains('active')) todoArr = todos;
-  else if ($active.classList.contains('active')) todoArr = todos.filter(todo => !todo.completed);
-  else todoArr = todos.filter(todo => todo.completed);
+  // eslint-disable-next-line max-len
+  todoArr = todos.filter(todo => (state === 'all' ? true : state === 'active' ? !todo.completed : todo.completed));
 
   $todosList.textContent = '';
   todoArr.forEach(({ id, content, completed }) => {
@@ -98,8 +96,9 @@ const clearAllCompleted = () => {
 };
 
 const changeState = event => {
-  [...event.currentTarget.children].forEach(child => child.classList.remove('active'));
-  event.target.classList.toggle('active');
+  // eslint-disable-next-line max-len
+  [...event.currentTarget.children].forEach(child => child.classList.toggle('active', event.target.id === child.id));
+  state = event.target.id;
   render();
 };
 
